@@ -1,7 +1,7 @@
-Hello Pecode
+Borutskyi_Serhii
 =======
-# Borutskyi_Serhii
-The first step in Cypress framework
-
+# The first step in Cypress framework
 Hello Pecode
+
+
 

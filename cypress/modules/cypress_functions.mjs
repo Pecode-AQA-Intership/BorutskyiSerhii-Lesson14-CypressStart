@@ -21,7 +21,19 @@ export const sortedArrayFunc = locator => {
     };
     sortedArray.sort();
     return sortedArray;
-}
+};
+
+export const reverseSortedArrayFunc = locator => {
+    let sortedArray = [];
+    let selectedArray = Cypress.$(locator);
+    for (let i = 0; i < selectedArray.length; i++) {
+        if (selectedArray[i].textContent.trim() !== "") {
+            sortedArray.push(selectedArray[i].textContent);
+        };
+    };
+    sortedArray.sort().reverse();
+    return sortedArray;
+};
 
 export let enteringSearchDataFunction = (description, enteringData) => {
     it(description, () => {

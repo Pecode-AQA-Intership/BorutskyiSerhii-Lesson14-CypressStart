@@ -3,7 +3,7 @@ import * as locators from '../modules/locators.mjs';
 
 describe('Filling out the "Text box" form', () => {
     before(() => {
-        cy.visit(MAIN_URL);
+        cy.visit('/text-box');
     });
 
     it('Entering a valid name in the "Full name" field.', () => {

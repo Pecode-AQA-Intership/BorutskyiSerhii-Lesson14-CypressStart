@@ -1,10 +1,10 @@
 import { WEB_TABLES_URL, RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../modules/variables.mjs';
 import * as locators from '../modules/locators.mjs';
-import { enteringSearchDataFunction, checkingSearchDataFunction, notSortedArrayFunc, sortedArrayFunc } from '../modules/cypress_functions.mjs';
+import { enteringSearchDataFunction, checkingSearchDataFunction, reverseSortedArrayFunc, notSortedArrayFunc, sortedArrayFunc } from '../modules/cypress_functions.mjs';
 
 describe('Add a new user on the "Web table" page', () => {
     before(() => {
-        cy.visit(WEB_TABLES_URL);
+        cy.visit('/webtables');
         cy.clearLocalStorage();
         cy.clearCookies();
     });
@@ -107,10 +107,6 @@ describe('Delete user from the table and check that user was deleted', () => {
 });
 
 describe('Check that table was sorted by each column.', () => {
-    beforeEach(() => {
-        cy.visit(WEB_TABLES_URL);
-    });
-
     it('Checking sort by "First name"', () => {
         cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(0)
             .should('include.text', 'First Name')
@@ -118,6 +114,16 @@ describe('Check that table was sorted by each column.', () => {
         cy.get(locators.FIRST_NAME_COLUMN_WEB_TABLES)
             .then(() => {
                 cy.wrap(notSortedArrayFunc(locators.FIRST_NAME_COLUMN_WEB_TABLES)).should('deep.equal', sortedArrayFunc(locators.FIRST_NAME_COLUMN_WEB_TABLES))
+            });
+    });
+
+    it('Checking reverse sort by "First name"', () => {
+        cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(0)
+            .should('include.text', 'First Name')
+            .click()
+        cy.get(locators.FIRST_NAME_COLUMN_WEB_TABLES)
+            .then(() => {
+                cy.wrap(notSortedArrayFunc(locators.FIRST_NAME_COLUMN_WEB_TABLES)).should('deep.equal', reverseSortedArrayFunc(locators.FIRST_NAME_COLUMN_WEB_TABLES))
             });
     });
 
@@ -131,6 +137,16 @@ describe('Check that table was sorted by each column.', () => {
             });
     });
 
+    it('Checking reverse sort by "Last name"', () => {
+        cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(1)
+            .should('include.text', 'Last Name')
+            .click()
+        cy.get(locators.LAST_NAME_COLUMN_WEB_TABLES)
+            .then(() => {
+                cy.wrap(notSortedArrayFunc(locators.LAST_NAME_COLUMN_WEB_TABLES)).should('deep.equal', reverseSortedArrayFunc(locators.LAST_NAME_COLUMN_WEB_TABLES))
+            });
+    });
+
     it('Checking sort by "Age"', () => {
         cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(2)
             .should('include.text', 'Age')
@@ -141,13 +157,33 @@ describe('Check that table was sorted by each column.', () => {
             });
     });
 
-    it('Checking sort by "Email"', () => {
+    it('Checking reverse sort by "Age"', () => {
+        cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(2)
+            .should('include.text', 'Age')
+            .click()
+        cy.get(locators.USER_AGE_COLUMN_WEB_TABLES)
+            .then(() => {
+                cy.wrap(notSortedArrayFunc(locators.USER_AGE_COLUMN_WEB_TABLES)).should('deep.equal', reverseSortedArrayFunc(locators.USER_AGE_COLUMN_WEB_TABLES))
+            });
+    });
+
+    it('Checking  sort by "Email"', () => {
         cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(3)
             .should('include.text', 'Email')
             .click()
         cy.get(locators.USER_EMAIL_COLUMN_WEB_TABLES)
             .then(() => {
                 cy.wrap(notSortedArrayFunc(locators.USER_EMAIL_COLUMN_WEB_TABLES)).should('deep.equal', sortedArrayFunc(locators.USER_EMAIL_COLUMN_WEB_TABLES))
+            });
+    });
+
+    it('Checking reverse sort by "Email"', () => {
+        cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(3)
+            .should('include.text', 'Email')
+            .click()
+        cy.get(locators.USER_EMAIL_COLUMN_WEB_TABLES)
+            .then(() => {
+                cy.wrap(notSortedArrayFunc(locators.USER_EMAIL_COLUMN_WEB_TABLES)).should('deep.equal', reverseSortedArrayFunc(locators.USER_EMAIL_COLUMN_WEB_TABLES))
             });
     });
 
@@ -168,6 +204,23 @@ describe('Check that table was sorted by each column.', () => {
             });
     });
 
+    it('Checking reverse sort by "Salary"', () => {
+        cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(4)
+            .should('include.text', 'Salary')
+            .click()
+        cy.get(locators.USER_SALARY_COLUMN_WEB_TABLES)
+            .then(() => {
+                let sortedArray = [];
+                let selectedArray = Cypress.$(locators.USER_SALARY_COLUMN_WEB_TABLES);
+                for (let i = 0; i < selectedArray.length; i++) {
+                    if (selectedArray[i].textContent.trim() !== "") {
+                        sortedArray.push(selectedArray[i].textContent);
+                    };
+                };
+                cy.wrap(sortedArray.sort().reverse()).should('deep.equal', reverseSortedArrayFunc(locators.USER_SALARY_COLUMN_WEB_TABLES));
+            });
+    });
+
     it('Checking sort by "Department"', () => {
         cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(5)
             .should('include.text', 'Department')
@@ -175,6 +228,16 @@ describe('Check that table was sorted by each column.', () => {
         cy.get(locators.USER_SALARY_COLUMN_WEB_TABLES)
             .then(() => {
                 cy.wrap(notSortedArrayFunc(locators.USER_DEPARTMENT_COLUMN_WEB_TABLES)).should('deep.equal', sortedArrayFunc(locators.USER_DEPARTMENT_COLUMN_WEB_TABLES))
+            });
+    });
+
+    it('Checking reverse sort by "Department"', () => {
+        cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(5)
+            .should('include.text', 'Department')
+            .click()
+        cy.get(locators.USER_SALARY_COLUMN_WEB_TABLES)
+            .then(() => {
+                cy.wrap(notSortedArrayFunc(locators.USER_DEPARTMENT_COLUMN_WEB_TABLES)).should('deep.equal', reverseSortedArrayFunc(locators.USER_DEPARTMENT_COLUMN_WEB_TABLES))
             });
     });
 });

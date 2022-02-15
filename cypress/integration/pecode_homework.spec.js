@@ -1,4 +1,4 @@
-import { MAIN_URL, RANDOM_NAME, RANDOM_EMAIL, RANDOM_ADDRESS } from '../modules/variables.mjs';
+import { RANDOM_NAME, RANDOM_EMAIL, RANDOM_ADDRESS } from '../modules/variables.mjs';
 import * as locators from '../modules/locators.mjs';
 
 describe('Filling out the "Text box" form', () => {

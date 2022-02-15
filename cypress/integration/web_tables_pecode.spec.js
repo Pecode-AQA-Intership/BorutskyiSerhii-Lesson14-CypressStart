@@ -1,4 +1,4 @@
-import { WEB_TABLES_URL, RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../modules/variables.mjs';
+import { RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../modules/variables.mjs';
 import * as locators from '../modules/locators.mjs';
 import { enteringSearchDataFunction, checkingSearchDataFunction, reverseSortedArrayFunc, notSortedArrayFunc, sortedArrayFunc } from '../modules/cypress_functions.mjs';
 
@@ -35,7 +35,6 @@ describe('Add a new user on the "Web table" page', () => {
             .parent()
             .contains(RANDOM_AGE);
     });
-
 });
 
 describe('Edit user and check that each field is editable on the "Web Tables" page.', () => {

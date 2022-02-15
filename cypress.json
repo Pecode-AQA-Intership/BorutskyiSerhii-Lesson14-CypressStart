@@ -1,3 +1,6 @@
 {
-    "baseUrl": "https://demoqa.com"
+    "baseUrl": "https://demoqa.com",
+        "viewportWidth": 1000,
+        "viewportHeight": 660
+      
 }

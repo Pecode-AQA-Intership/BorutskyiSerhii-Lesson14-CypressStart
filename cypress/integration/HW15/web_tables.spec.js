@@ -1,10 +1,10 @@
-import { WEB_TABLES_URL, RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../modules/variables.mjs';
-import * as locators from '../modules/locators.mjs';
-import { enteringSearchDataFunction, checkingSearchDataFunction, notSortedArrayFunc, sortedArrayFunc } from '../modules/cypress_functions.mjs';
+import { RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../../pages/web_tables/variables.mjs';
+import * as locators from '../../pages/web_tables/locators.mjs';
+import { enteringSearchDataFunction, checkingSearchDataFunction, notSortedArrayFunc, sortedArrayFunc } from '../../pages/web_tables/cypress_functions.mjs';
 
 describe('Add a new user on the "Web table" page', () => {
     before(() => {
-        cy.visit(WEB_TABLES_URL);
+        cy.visit('/webtables');
         cy.clearLocalStorage();
         cy.clearCookies();
     });
@@ -35,7 +35,6 @@ describe('Add a new user on the "Web table" page', () => {
             .parent()
             .contains(RANDOM_AGE);
     });
-
 });
 
 describe('Edit user and check that each field is editable on the "Web Tables" page.', () => {
@@ -108,7 +107,7 @@ describe('Delete user from the table and check that user was deleted', () => {
 
 describe('Check that table was sorted by each column.', () => {
     beforeEach(() => {
-        cy.visit(WEB_TABLES_URL);
+        cy.visit('/webtables');
     });
 
     it('Checking sort by "First name"', () => {

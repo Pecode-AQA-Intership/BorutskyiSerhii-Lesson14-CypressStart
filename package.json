@@ -1,23 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "borutskyishw14-firsstepcypers",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "cypress": "^9.4.1"
-  },
-  "dependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5"
-  }
-}
-=======
     "name": "borutskyishw14-firsstepcypers",
     "version": "1.0.0",
     "description": "",
@@ -36,4 +17,3 @@
       "@faker-js/faker": "^6.0.0-alpha.5"
     }
   }
->>>>>>> master

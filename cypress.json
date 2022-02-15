@@ -1,10 +1,5 @@
 {
-<<<<<<< HEAD
-    "baseUrl": "https://demoqa.com"
-}
-=======
     "baseUrl": "https://demoqa.com",
     "viewportWidth": 1920,
     "viewportHeight": 1080
 }
->>>>>>> master

@@ -24,9 +24,8 @@ export class InputData {
     };
 
     gender(inputGender) {
-        cy.get(locators.GENDER_BLOCKS_LOCATOR).contains(`${inputGender}`).parent().find('input[type="radio"]')
+        return cy.get(locators.GENDER_BLOCKS_LOCATOR).contains(`${inputGender}`).parent().find('input[type="radio"]')
             .check({ force: true });
-        return this;
     };
 
     phoneNumber(inputPhoneNumber) {
@@ -48,13 +47,12 @@ export class InputData {
     };
 
     subjects(inputSubject) {
-        cy.get(locators.SUBJECTS_LOCATOR).type(`${inputSubject}`, { force: true });
+        return cy.get(locators.SUBJECTS_LOCATOR).type(`${inputSubject}`, { force: true });
     };
 
     hobbies(inputHobbie) {
-        cy.get(locators.HOBBIES_CHECKBOXES_LOCATOR).contains(`${inputHobbie}`).parent().find('input[type="checkbox"]')
+        return cy.get(locators.HOBBIES_CHECKBOXES_LOCATOR).contains(`${inputHobbie}`).parent().find('input[type="checkbox"]')
             .check({ force: true });
-        return this;
     };
 
     uploadPicture(file) {
@@ -62,8 +60,7 @@ export class InputData {
     }
 
     currentAddress(inputCerrentAddress) {
-        cy.get(locators.CURRENT_ADRESS_LOCATOR).type(inputCerrentAddress);
-        return this;
+        return cy.get(locators.CURRENT_ADRESS_LOCATOR).type(inputCerrentAddress);
     };
 
     state(inputState) {
@@ -92,5 +89,24 @@ export class InputData {
             return this;
         };
         return cy.get(locators.SELECT_CITY_LOCATOR).type(`${inputCity}{enter}`);
+    };
+};
+
+export class Check {
+    checkSubmitForm(valueToCheck) {
+        return cy.get(locators.FORM_AFTER_SUBMISSION)
+            .find('tr>td')
+            .contains(valueToCheck)
+            .siblings();
+    };
+};
+
+export class Buttons {
+    submitButton() {
+        return cy.get(locators.SUBMIT_FORM_BUTTON_LOCATOR).click();
+    };
+
+    closeButton() {
+        return cy.get(locators.CLOSE_BUTTON_LOCATOR).click({force: true});
     };
 };

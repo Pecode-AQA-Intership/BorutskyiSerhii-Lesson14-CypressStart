@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 export const RANDOM_FIRST_NAME = faker.name.findName();
 export const RANDOM_LAST_NAME = faker.name.findName();
 export const RANDOM_EMAIL = faker.internet.email();
-export const RANDOM_PHONE_NUMBER = '9999999999';
+export const RANDOM_PHONE_NUMBER = faker.phone.phoneNumber("##########");
 export const RANDOM_CURRENT_ADDRESS = faker.address.secondaryAddress();
 export const EDIT_RANDOM_SUBJECTS = faker.commerce.department();
 export const RANDOM_MONTH = faker.date.month();

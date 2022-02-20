@@ -1,12 +1,11 @@
 import { RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../../pages/web_tables/variables.mjs';
 import * as locators from '../../pages/web_tables/locators.mjs';
 import { enteringSearchDataFunction, checkingSearchDataFunction, notSortedArrayFunc, sortedArrayFunc } from '../../pages/web_tables/cypress_functions.mjs';
+import * as globalLocators from '../../pages/global_locators.mjs';
 
 describe('Add a new user on the "Web table" page', () => {
     before(() => {
         cy.visit('/webtables');
-        cy.clearLocalStorage();
-        cy.clearCookies();
     });
 
     it('Opening the new user registration form on the "Web Tables" page.', () => {
@@ -17,23 +16,23 @@ describe('Add a new user on the "Web table" page', () => {
     it('Filling out the user registration form with valid data.', () => {
         cy.get(locators.FIRST_NAME_WEB_TABLES).type(RANDOM_NAME).should('have.value', RANDOM_NAME);
         cy.get(locators.LAST_NAME_WEB_TABLES).type(RANDOM_LAST_NAME).should('have.value', RANDOM_LAST_NAME);
-        cy.get(locators.USER_EMAIL_WEB_TABLES).type(RANDOM_EMAIL).should('have.value', RANDOM_EMAIL);
+        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR).type(RANDOM_EMAIL).should('have.value', RANDOM_EMAIL);
         cy.get(locators.USER_AGE_WEB_TABLES).type(RANDOM_AGE).should('have.value', RANDOM_AGE);
         cy.get(locators.USER_SALARY_WEB_TABLES).type(RANDOM_SALARY).should('have.value', RANDOM_SALARY);
         cy.get(locators.USER_DEPARTMENT_WEB_TABLES).type(RANDOM_DEPARTMENT).should('have.value', RANDOM_DEPARTMENT);
     });
 
     it('Submit new user registration form.', () => {
-        cy.get(locators.SUBMIT_BUTTON_WEB_TABLES).click();
+        cy.get(globalLocators.GLOBAL_SUBMIT_BUTTON_LOCATOR).click();
     });
 
     it('Checking the creation of a new user', () => {
         cy.get(locators.WEB_TABLES_WRAPPER)
-            .contains(RANDOM_EMAIL)
+            .should('contain.text', RANDOM_EMAIL)
             .parent()
-            .contains(RANDOM_LAST_NAME)
+            .should('contain.text', RANDOM_LAST_NAME)
             .parent()
-            .contains(RANDOM_AGE);
+            .should('contain.text', RANDOM_AGE);
     });
 });
 
@@ -49,23 +48,23 @@ describe('Edit user and check that each field is editable on the "Web Tables" pa
     it('Editing data in the "Registration" form on the "Web Tables" page.', () => {
         cy.get(locators.FIRST_NAME_WEB_TABLES).clear().type(EDIT_RANDOM_NAME).should('have.value', EDIT_RANDOM_NAME);
         cy.get(locators.LAST_NAME_WEB_TABLES).clear().type(EDIT_RANDOM_LAST_NAME).should('have.value', EDIT_RANDOM_LAST_NAME);
-        cy.get(locators.USER_EMAIL_WEB_TABLES).clear().type(EDIT_RANDOM_EMAIL).should('have.value', EDIT_RANDOM_EMAIL);
+        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR).clear().type(EDIT_RANDOM_EMAIL).should('have.value', EDIT_RANDOM_EMAIL);
         cy.get(locators.USER_AGE_WEB_TABLES).clear().type(EDIT_RANDOM_AGE).should('have.value', EDIT_RANDOM_AGE);
         cy.get(locators.USER_SALARY_WEB_TABLES).clear().type(EDIT_RANDOM_SALARY).should('have.value', EDIT_RANDOM_SALARY);
         cy.get(locators.USER_DEPARTMENT_WEB_TABLES).clear().type(EDIT_RANDOM_DEPARTMENT).should('have.value', EDIT_RANDOM_DEPARTMENT);
     });
 
     it('Submit a new user registration form with edited data.', () => {
-        cy.get(locators.SUBMIT_BUTTON_WEB_TABLES).click();
+        cy.get(globalLocators.GLOBAL_SUBMIT_BUTTON_LOCATOR).click();
     });
 
     it('Verifying that the user form has been edited correctly', () => {
         cy.get(locators.WEB_TABLES_WRAPPER)
-            .contains(EDIT_RANDOM_EMAIL)
+            .should('contain.text', EDIT_RANDOM_EMAIL)
             .parent()
-            .contains(EDIT_RANDOM_LAST_NAME)
+            .should('contain.text', EDIT_RANDOM_LAST_NAME)
             .parent()
-            .contains(EDIT_RANDOM_AGE);
+            .should('contain.text', EDIT_RANDOM_AGE);
     });
 });
 
@@ -106,10 +105,6 @@ describe('Delete user from the table and check that user was deleted', () => {
 });
 
 describe('Check that table was sorted by each column.', () => {
-    beforeEach(() => {
-        cy.visit('/webtables');
-    });
-
     it('Checking sort by "First name"', () => {
         cy.get(locators.HEADER_BUTTONS_WEB_TABLES).eq(0)
             .should('include.text', 'First Name')

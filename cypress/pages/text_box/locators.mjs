@@ -1,8 +1,6 @@
 export const USER_NAME_LOCATOR = '#userName';
-export const USER_EMAIL_LOCATOR = '#userEmail';
 export const CURRENT_ADDRESS_LOCATOR = '#currentAddress';
 export const PERMANENT_ADDRESS_LOCATOR = '#permanentAddress';
-export const SUBMIT_BUTTON_LOCATOR = '#submit';
 export const OUTPUT_USER_NAME_LOCATOR = '#output #name';
 export const OUTPUT_USER_EMAIL_LOCATOR = '#output #email';
 export const OUTPUT_CURRENT_ADDRESS_LOCATOR = '#output #currentAddress';

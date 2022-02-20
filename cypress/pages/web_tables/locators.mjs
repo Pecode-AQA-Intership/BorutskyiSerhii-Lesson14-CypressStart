@@ -1,11 +1,9 @@
 export const ADD_BUTTON_WEB_TABLES = '#addNewRecordButton';
 export const FIRST_NAME_WEB_TABLES = '#firstName';
 export const LAST_NAME_WEB_TABLES = '#lastName';
-export const USER_EMAIL_WEB_TABLES = '#userEmail';
 export const USER_AGE_WEB_TABLES = '#age';
 export const USER_SALARY_WEB_TABLES = '#salary';
 export const USER_DEPARTMENT_WEB_TABLES = '#department';
-export const SUBMIT_BUTTON_WEB_TABLES = '#submit';
 export const SEARCH_FIELD_WEB_TABLES = '#searchBox';
 export const WEB_TABLES_WRAPPER = '.web-tables-wrapper *[role="rowgroup"]';
 export const EDIT_BUTTON_WEB_TABLES = '*[title="Edit"] svg';

@@ -1,5 +1,6 @@
-import { RANDOM_NAME, RANDOM_EMAIL, RANDOM_ADDRESS } from '../modules/variables.mjs';
-import * as locators from '../modules/locators.mjs';
+import { RANDOM_NAME, RANDOM_EMAIL, RANDOM_ADDRESS } from '../../pages/text_box/variables.mjs';
+import * as locators from '../../pages/text_box/locators.mjs';
+import * as globalLocators from '../../pages/global_locators.mjs';
 
 describe('Filling out the "Text box" form', () => {
     before(() => {
@@ -13,7 +14,7 @@ describe('Filling out the "Text box" form', () => {
     });
 
     it('Entering a valid email in the "Email" field.', () => {
-        cy.get(locators.USER_EMAIL_LOCATOR)
+        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR)
             .type(RANDOM_EMAIL)
             .should('have.value', RANDOM_EMAIL);
     });
@@ -31,7 +32,7 @@ describe('Filling out the "Text box" form', () => {
     });
 
     it('Clicking on the "Submit" button.', () => {
-        cy.get(locators.SUBMIT_BUTTON_LOCATOR)
+        cy.get(globalLocators.GLOBAL_SUBMIT_BUTTON_LOCATOR)
             .click();
     });
 

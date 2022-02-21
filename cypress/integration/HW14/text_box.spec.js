@@ -36,7 +36,7 @@ describe('Filling out the "Text box" form', () => {
             .click();
     });
 
-    it('Checking the correctness of all data', () => {
+    it('Checking the correctness of all data ', () => {
         cy.get(locators.OUTPUT_USER_NAME_LOCATOR).should('include.text', RANDOM_NAME);
         cy.get(locators.OUTPUT_USER_EMAIL_LOCATOR).should('include.text', RANDOM_EMAIL);
         cy.get(locators.OUTPUT_CURRENT_ADDRESS_LOCATOR).should('include.text', RANDOM_ADDRESS);

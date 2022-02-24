@@ -1,6 +1,6 @@
 import { RANDOM_NAME, RANDOM_EMAIL, RANDOM_ADDRESS } from '../../pages/text_box/variables.mjs';
 import * as locators from '../../pages/text_box/locators.mjs';
-import * as globalLocators from '../../pages/global_locators.mjs';
+import * as globalLocators from '../../pages/global_variables/global_locators.mjs';
 
 describe('Filling out the "Text box" form', () => {
     before(() => {

@@ -1,7 +1,7 @@
-import { RANDOM_NAME, RANDOM_LAST_NAME, RANDOM_EMAIL, RANDOM_DEPARTMENT, RANDOM_AGE, RANDOM_SALARY, EDIT_RANDOM_AGE, EDIT_RANDOM_DEPARTMENT, EDIT_RANDOM_EMAIL, EDIT_RANDOM_NAME, EDIT_RANDOM_LAST_NAME, EDIT_RANDOM_SALARY } from '../../pages/web_tables/variables.mjs';
+import * as randomVariables from '../../pages/web_tables/variables.mjs';
 import * as locators from '../../pages/web_tables/locators.mjs';
 import { enteringSearchDataFunction, checkingSearchDataFunction, notSortedArrayFunc, sortedArrayFunc } from '../../pages/web_tables/cypress_functions.mjs';
-import * as globalLocators from '../../pages/global_locators.mjs';
+import * as globalLocators from '../../pages/global_variables/global_locators.mjs';
 
 describe('Add a new user on the "Web table" page', () => {
     before(() => {
@@ -14,12 +14,12 @@ describe('Add a new user on the "Web table" page', () => {
     });
 
     it('Filling out the user registration form with valid data.', () => {
-        cy.get(locators.FIRST_NAME_WEB_TABLES).type(RANDOM_NAME).should('have.value', RANDOM_NAME);
-        cy.get(locators.LAST_NAME_WEB_TABLES).type(RANDOM_LAST_NAME).should('have.value', RANDOM_LAST_NAME);
-        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR).type(RANDOM_EMAIL).should('have.value', RANDOM_EMAIL);
-        cy.get(locators.USER_AGE_WEB_TABLES).type(RANDOM_AGE).should('have.value', RANDOM_AGE);
-        cy.get(locators.USER_SALARY_WEB_TABLES).type(RANDOM_SALARY).should('have.value', RANDOM_SALARY);
-        cy.get(locators.USER_DEPARTMENT_WEB_TABLES).type(RANDOM_DEPARTMENT).should('have.value', RANDOM_DEPARTMENT);
+        cy.get(locators.FIRST_NAME_WEB_TABLES).type(randomVariables.RANDOM_NAME).should('have.value', randomVariables.RANDOM_NAME);
+        cy.get(locators.LAST_NAME_WEB_TABLES).type(randomVariables.RANDOM_LAST_NAME).should('have.value', randomVariables.RANDOM_LAST_NAME);
+        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR).type(randomVariables.RANDOM_EMAIL).should('have.value', randomVariables.RANDOM_EMAIL);
+        cy.get(locators.USER_AGE_WEB_TABLES).type(randomVariables.RANDOM_AGE).should('have.value', randomVariables.RANDOM_AGE);
+        cy.get(locators.USER_SALARY_WEB_TABLES).type(randomVariables.RANDOM_SALARY).should('have.value', randomVariables.RANDOM_SALARY);
+        cy.get(locators.USER_DEPARTMENT_WEB_TABLES).type(randomVariables.RANDOM_DEPARTMENT).should('have.value', randomVariables.RANDOM_DEPARTMENT);
     });
 
     it('Submit new user registration form.', () => {
@@ -28,30 +28,30 @@ describe('Add a new user on the "Web table" page', () => {
 
     it('Checking the creation of a new user', () => {
         cy.get(locators.WEB_TABLES_WRAPPER)
-            .should('contain.text', RANDOM_EMAIL)
+            .should('contain.text', randomVariables.RANDOM_EMAIL)
             .parent()
-            .should('contain.text', RANDOM_LAST_NAME)
+            .should('contain.text', randomVariables.RANDOM_LAST_NAME)
             .parent()
-            .should('contain.text', RANDOM_AGE);
+            .should('contain.text', randomVariables.RANDOM_AGE);
     });
 });
 
 describe('Edit user and check that each field is editable on the "Web Tables" page.', () => {
     it('Opening the edit form', () => {
         cy.get(locators.WEB_TABLES_WRAPPER)
-            .contains(RANDOM_EMAIL)
+            .contains(randomVariables.RANDOM_EMAIL)
             .parent()
             .find(locators.EDIT_BUTTON_WEB_TABLES)
             .click();
     });
 
     it('Editing data in the "Registration" form on the "Web Tables" page.', () => {
-        cy.get(locators.FIRST_NAME_WEB_TABLES).clear().type(EDIT_RANDOM_NAME).should('have.value', EDIT_RANDOM_NAME);
-        cy.get(locators.LAST_NAME_WEB_TABLES).clear().type(EDIT_RANDOM_LAST_NAME).should('have.value', EDIT_RANDOM_LAST_NAME);
-        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR).clear().type(EDIT_RANDOM_EMAIL).should('have.value', EDIT_RANDOM_EMAIL);
-        cy.get(locators.USER_AGE_WEB_TABLES).clear().type(EDIT_RANDOM_AGE).should('have.value', EDIT_RANDOM_AGE);
-        cy.get(locators.USER_SALARY_WEB_TABLES).clear().type(EDIT_RANDOM_SALARY).should('have.value', EDIT_RANDOM_SALARY);
-        cy.get(locators.USER_DEPARTMENT_WEB_TABLES).clear().type(EDIT_RANDOM_DEPARTMENT).should('have.value', EDIT_RANDOM_DEPARTMENT);
+        cy.get(locators.FIRST_NAME_WEB_TABLES).clear().type(randomVariables.EDIT_RANDOM_NAME).should('have.value', randomVariables.EDIT_RANDOM_NAME);
+        cy.get(locators.LAST_NAME_WEB_TABLES).clear().type(randomVariables.EDIT_RANDOM_LAST_NAME).should('have.value', randomVariables.EDIT_RANDOM_LAST_NAME);
+        cy.get(globalLocators.GLOBAL_USER_EMAIL_LOCATOR).clear().type(randomVariables.EDIT_RANDOM_EMAIL).should('have.value', randomVariables.EDIT_RANDOM_EMAIL);
+        cy.get(locators.USER_AGE_WEB_TABLES).clear().type(randomVariables.EDIT_RANDOM_AGE).should('have.value', randomVariables.EDIT_RANDOM_AGE);
+        cy.get(locators.USER_SALARY_WEB_TABLES).clear().type(randomVariables.EDIT_RANDOM_SALARY).should('have.value', randomVariables.EDIT_RANDOM_SALARY);
+        cy.get(locators.USER_DEPARTMENT_WEB_TABLES).clear().type(randomVariables.EDIT_RANDOM_DEPARTMENT).should('have.value', randomVariables.EDIT_RANDOM_DEPARTMENT);
     });
 
     it('Submit a new user registration form with edited data.', () => {
@@ -60,38 +60,38 @@ describe('Edit user and check that each field is editable on the "Web Tables" pa
 
     it('Verifying that the user form has been edited correctly', () => {
         cy.get(locators.WEB_TABLES_WRAPPER)
-            .should('contain.text', EDIT_RANDOM_EMAIL)
+            .should('contain.text', randomVariables.EDIT_RANDOM_EMAIL)
             .parent()
-            .should('contain.text', EDIT_RANDOM_LAST_NAME)
+            .should('contain.text', randomVariables.EDIT_RANDOM_LAST_NAME)
             .parent()
-            .should('contain.text', EDIT_RANDOM_AGE);
+            .should('contain.text', randomVariables.EDIT_RANDOM_AGE);
     });
 });
 
 describe('Checking search feature in the "Search" field', () => {
-    enteringSearchDataFunction('Entering a username in the "Search" field', EDIT_RANDOM_NAME);
-    checkingSearchDataFunction('Check searching by username', EDIT_RANDOM_NAME);
+    enteringSearchDataFunction('Entering a username in the "Search" field', randomVariables.EDIT_RANDOM_NAME);
+    checkingSearchDataFunction('Check searching by username', randomVariables.EDIT_RANDOM_NAME);
 
-    enteringSearchDataFunction('Entering a last name in the "Search" field', EDIT_RANDOM_LAST_NAME);
-    checkingSearchDataFunction('Check searching by last name', EDIT_RANDOM_LAST_NAME);
+    enteringSearchDataFunction('Entering a last name in the "Search" field', randomVariables.EDIT_RANDOM_LAST_NAME);
+    checkingSearchDataFunction('Check searching by last name', randomVariables.EDIT_RANDOM_LAST_NAME);
 
-    enteringSearchDataFunction('Entering a email in the "Search" field', EDIT_RANDOM_EMAIL);
-    checkingSearchDataFunction('Check searching by username', EDIT_RANDOM_NAME);
+    enteringSearchDataFunction('Entering a email in the "Search" field', randomVariables.EDIT_RANDOM_EMAIL);
+    checkingSearchDataFunction('Check searching by username', randomVariables.EDIT_RANDOM_NAME);
 
-    enteringSearchDataFunction('Entering a user age in the "Search" field', EDIT_RANDOM_AGE);
-    checkingSearchDataFunction('Check searching by user age', EDIT_RANDOM_AGE);
+    enteringSearchDataFunction('Entering a user age in the "Search" field', randomVariables.EDIT_RANDOM_AGE);
+    checkingSearchDataFunction('Check searching by user age', randomVariables.EDIT_RANDOM_AGE);
 
-    enteringSearchDataFunction('Entering a user salary in the "Search" field', EDIT_RANDOM_SALARY);
-    checkingSearchDataFunction('Check searching by user salary', EDIT_RANDOM_SALARY);
+    enteringSearchDataFunction('Entering a user salary in the "Search" field', randomVariables.EDIT_RANDOM_SALARY);
+    checkingSearchDataFunction('Check searching by user salary', randomVariables.EDIT_RANDOM_SALARY);
 
-    enteringSearchDataFunction('Entering a user department in the "Search" field', EDIT_RANDOM_DEPARTMENT);
-    checkingSearchDataFunction('Check searching by user department', EDIT_RANDOM_DEPARTMENT);
+    enteringSearchDataFunction('Entering a user department in the "Search" field', randomVariables.EDIT_RANDOM_DEPARTMENT);
+    checkingSearchDataFunction('Check searching by user department', randomVariables.EDIT_RANDOM_DEPARTMENT);
 });
 
 describe('Delete user from the table and check that user was deleted', () => {
     it('Deleting user from the table', () => {
         cy.get(locators.WEB_TABLES_WRAPPER)
-            .contains(EDIT_RANDOM_EMAIL)
+            .contains(randomVariables.EDIT_RANDOM_EMAIL)
             .parent()
             .find(locators.DELETE_BUTTON_WEB_TABLES)
             .click();
@@ -99,7 +99,7 @@ describe('Delete user from the table and check that user was deleted', () => {
 
     it('Checking that the user was deleted', () => {
         cy.get(locators.WEB_TABLES_WRAPPER).should(element => {
-            expect(element).not.contain(EDIT_RANDOM_EMAIL);
+            expect(element).not.contain(randomVariables.EDIT_RANDOM_EMAIL);
         });
     });
 });
